@@ -7,16 +7,13 @@ function calculator(x, y, cal) {
     if (cal === '+') {
         console.log(x + y);
         return x + y;
-    }
-    if (cal === '-') {
+    }else if (cal === '-') {
         console.log(x - y);
         return x - y;
-    }
-    if (cal === '*') {
+    }else  if (cal === '*') {
         console.log(x * y);
         return x * y;
-    }
-    if (cal === '/') {
+    }else if (cal === '/') {
         console.log(x / y);
         return x / y;
     }
