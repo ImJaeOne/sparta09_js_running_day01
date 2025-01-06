@@ -17,10 +17,27 @@ const userACart = {
     ],
 };
 
-const userBCart = userACart;
+let copyObjectDeep = function (target) {
+    let result = [];
+    for (let prop in target) {
+        if (typeof target[prop] === 'object' && target !== null) {
+            result[prop] = copyObjectDeep(target[prop]);
+        } else {
+            result[prop] = target[prop];
+        }
+    }
+    return result;
+};
+
+const userBCart = copyObjectDeep(userACart);
+console.log(userACart);
+console.log(userBCart);
 const coupon = { discount: 5000 };
 
 applyCoupon(userBCart, coupon);
+
+console.log(userACart);
+console.log(userBCart);
 // 1. userACart.items와 userBCart.item 모두 5000원씩 줄어들었다.
 // 2. 서로 같은 주소의 키 값을 참조하고 있기 때문
 // 3. const userBCart = {
@@ -29,3 +46,4 @@ applyCoupon(userBCart, coupon);
 //         { name: '마우스', price: 20000 },
 //     ],
 // };
+
